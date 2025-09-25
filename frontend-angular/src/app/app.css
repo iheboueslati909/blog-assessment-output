@@ -1,0 +1,32 @@
+
+.app-header {
+  background: rgba(15, 32, 39, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 1.25rem;
+  color: #f7f7f7;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-shell {
+  display: flex;        /* sidebar + main side by side */
+  flex-direction: row;  /* make sure it's horizontal, not vertical */
+  min-height: 100vh;    /* full viewport height */
+  width: 100%;
+}
+
+.app-main {
+  flex: 1;              /* take the remaining space */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem;
+}

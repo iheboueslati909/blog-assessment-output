@@ -1,0 +1,35 @@
+{
+  "name": "auth-service",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon --watch src --exec \"node ./src/server.js\"",
+    "lint": "eslint . || true",
+    "format": "prettier --write \"src/**/*.{js,json,md}\""
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "express": "~4.16.1",
+    "express-rate-limit": "^6.11.0",
+    "helmet": "^7.0.0",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.1",
+    "morgan": "~1.9.1",
+    "multer": "^2.0.2",
+    "redis": "^5.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.35.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  }
+}

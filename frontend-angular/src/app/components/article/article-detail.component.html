@@ -1,0 +1,95 @@
+<div *ngIf="!loading" class="p-6 space-y-6">
+
+  <div *ngIf="error" class="text-red-500 font-semibold">{{ error }}</div>
+
+  <div *ngIf="article" class="space-y-6">
+
+    <!-- Article Details Card -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md prose prose-invert max-w-none space-y-4">
+      <h1 class="page-title page-title--large">{{ article.title }}</h1>
+      <p class="text-sm text-gray-400">
+        By <span class="font-medium">{{ article.authorId }}</span> · {{ article.createdAt | date }}
+      </p>
+
+      <!-- Article Image -->
+      <div class="relative mx-auto my-4 rounded-md overflow-hidden max-w-full max-h-[400px] shadow-sm">
+        <img [src]="getImageUrl(article.image)" 
+             (error)="onImageError($event)" 
+             alt="article image"
+             class="w-full h-full object-contain">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+
+      <!-- Article Content -->
+      <div class="text-gray-200" [innerHTML]="article.content"></div>
+    </div>
+
+    <!-- Action Buttons Card -->
+    <div class="bg-gray-800 p-4 rounded-lg shadow-md flex flex-wrap gap-3">
+      <button (click)="edit()" 
+              class="px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-white rounded shadow" 
+              *ngIf="canEdit()">
+        Edit
+      </button>
+      <button (click)="remove()" 
+              class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded shadow" 
+              *ngIf="canDelete()">
+        Delete
+      </button>
+      <button routerLink="/articles" 
+              class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded shadow">
+        Back
+      </button>
+    </div>
+
+    <!-- Comments Section Card -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+      <h2 class="text-xl font-semibold text-white">Comments</h2>
+      <p class="text-sm text-gray-400">Top-level comments: {{ commentsTotalTopLevel }}</p>
+
+      <!-- Add New Comment -->
+      <div class="space-y-2">
+        <textarea [(ngModel)]="newCommentContent" rows="3" 
+                  class="w-full border border-gray-700 rounded p-2 bg-gray-900 text-gray-100"></textarea>
+        <button (click)="addComment()" 
+                class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded shadow">
+          Post Comment
+        </button>
+      </div>
+
+      <!-- Comments List -->
+      <div *ngIf="comments?.length === 0" class="text-gray-500">No comments yet. Be the first to comment.</div>
+
+      <ng-template #commentNode let-comment>
+        <div class="bg-gray-900 p-4 rounded-lg shadow-sm space-y-2 border border-gray-700">
+          <p class="text-xs text-gray-400">{{ comment.authorId }} · {{ comment.createdAt | date:'short' }}</p>
+          <p class="text-gray-200">{{ comment.content }}</p>
+
+          <button class="text-blue-500 text-sm mt-1" (click)="toggleReplyBox(comment._id)">
+            {{ replyOpenFor[comment._id] ? 'Cancel' : 'Reply' }}
+          </button>
+
+          <div *ngIf="replyOpenFor[comment._id]" class="mt-2 space-y-1">
+            <textarea [(ngModel)]="replyContent[comment._id]" rows="2" 
+                      class="w-full border border-gray-700 rounded p-2 bg-gray-900 text-gray-100"></textarea>
+            <button (click)="addComment(comment._id)" 
+                    class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded shadow">
+              Post Reply
+            </button>
+          </div>
+
+          <!-- Nested Replies -->
+          <div class="ml-6 mt-2 space-y-2" *ngFor="let child of comment.replies || []">
+            <ng-container *ngTemplateOutlet="commentNode; context: { $implicit: child }"></ng-container>
+          </div>
+        </div>
+      </ng-template>
+
+      <div *ngFor="let c of comments">
+        <ng-container *ngTemplateOutlet="commentNode; context: { $implicit: c }"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="p-6 text-gray-400">Loading...</div>

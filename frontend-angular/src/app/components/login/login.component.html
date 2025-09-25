@@ -1,0 +1,37 @@
+<div class="login-container">
+  <h1 class="page-title">Login</h1>
+
+  <form (ngSubmit)="submit()" [formGroup]="loginForm" novalidate>
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+    </label>
+    <div
+      class="error"
+      *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+    >
+      Valid email is required.
+    </div>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" />
+    </label>
+    <div
+      class="error"
+      *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+    >
+      Password is required.
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button type="submit" class="btn-primary" [disabled]="loading">
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+  </form>
+
+  <p>
+    Don't have an account? <a  routerLink="/register">Register</a>
+  </p>
+</div>

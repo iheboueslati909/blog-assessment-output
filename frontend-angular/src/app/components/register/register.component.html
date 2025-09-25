@@ -1,0 +1,61 @@
+<div class="register-container">
+  <h1 class="page-title">Register</h1>
+
+  <form (ngSubmit)="submit()" [formGroup]="registerForm" novalidate>
+    <label>
+      Name
+      <input formControlName="name" />
+    </label>
+    <div
+      class="error"
+      *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid"
+    >
+      Name is required (min 2 chars).
+    </div>
+
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+    </label>
+    <div
+      class="error"
+      *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+    >
+      Valid email is required.
+    </div>
+
+    <label>
+      Password
+      <input type="password" formControlName="password" />
+    </label>
+    <div
+      class="error"
+      *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+    >
+      Password is required (min 6 chars).
+    </div>
+
+    <label>
+      Confirm Password
+      <input type="password" formControlName="confirm" />
+    </label>
+    <div
+      class="error"
+      *ngIf="
+        registerForm.errors?.['mismatch'] && registerForm.get('confirm')?.touched
+      "
+    >
+      Passwords do not match.
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button type="submit" class="btn-primary" [disabled]="loading">
+      {{ loading ? 'Registering...' : 'Register' }}
+    </button>
+  </form>
+
+  <p>
+    Already have an account? <a routerLink="/login">Login</a>
+  </p>
+</div>
