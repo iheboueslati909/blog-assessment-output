@@ -37,6 +37,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Basic rate limiter (adjust in config)
 const globalLimiter = rateLimit({
   windowMs: config.RATE_LIMIT_WINDOW_MS,
@@ -49,7 +51,6 @@ app.use(globalLimiter);
 app.get('/healthz', (req, res) => res.status(200).json({ status: 'ok' }));
 
 app.use('/api/articles', articleRoutes);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Not Found' });
