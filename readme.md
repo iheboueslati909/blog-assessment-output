@@ -37,7 +37,7 @@
 ---
 
 ## Structure du Projet
-Chaque microservice est dans un repository séparé ( pour consulter l'historique du commits ) OU code finale dans cette repository auddi :  
+Chaque microservice est dans un repository séparé ( pour consulter l'historique du commits ) OU code finale dans cette repository aussi :  
 - **Frontend Angular** → [\[lien du repo frontend\]  ](https://github.com/iheboueslati909/blog-assessment-front)
 - **Auth-MS** → [\[lien du repo auth-ms\]  ](https://github.com/iheboueslati909/auth-backend-expressjs)
 - **Article-MS** → [\[lien du repo article-ms\] ](https://github.com/iheboueslati909/blog-assessment-products-api) 
