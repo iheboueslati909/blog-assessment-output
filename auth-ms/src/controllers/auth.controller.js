@@ -124,7 +124,7 @@ async function register(req, res, next) {
       name: name || '',
       email,
       passwordHash,
-      roles: ['Reader'],
+      roles: ['Author'],
     });
 
     await user.save();
