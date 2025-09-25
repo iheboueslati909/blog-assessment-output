@@ -37,7 +37,19 @@
 ---
 
 ## Structure du Projet
-/frontend-angular → Application Angular (UI)
-/auth-ms → Microservice Auth & Users
-/article-ms → Microservice Articles & Comments
-/notification-ms → Microservice Notifications (WebSockets)
+Chaque microservice est dans un repository séparé ( pour consulter l'historique du commits ) OU code finale dans cette repository auddi :  
+- **Frontend Angular** → [lien du repo frontend]  
+- **Auth-MS** → [lien du repo auth-ms]  
+- **Article-MS** → [lien du repo article-ms]  
+- **Notification-MS** → [lien du repo notification-ms]  
+
+## Installation & Lancement
+### Prérequis
+- Node.js >= 18
+- MongoDB
+- Redis (dockerisé recommandé)
+### Commandes
+- "npm i " pour installers les dépendances dans chaque projet.
+- **Angular** ng serve 
+- **Backends** npm run dev
+
