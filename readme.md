@@ -34,7 +34,7 @@
 - Mots de passe et tokens **hachés en base**  
 - **CORS activé** 
 - Upload d’images abstrait → stockage local ou cloud (S3) selon l’environnement  
-
+- Un système de rate limiting est configuré pour limiter les abus
 ---
 
 ## Structure du Projet
