@@ -1,5 +1,8 @@
 # Blog Collaboratif - MEAN Stack Test
 
+<img width="1913" height="863" alt="login screen" src="https://github.com/user-attachments/assets/22beeaa8-b652-4263-b337-1e59d47e87aa" />
+
+
 ## Stack & Temps
 - **Frontend**: Angular v20, Socket.io, Toastr  
 - **Backend**: Node.js, Express.js, MongoDB, Redis, Microservices  
