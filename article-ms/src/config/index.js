@@ -26,7 +26,7 @@ const config = {
 
   // Rate limiting
   RATE_LIMIT_WINDOW_MS: Number(getEnv('RATE_LIMIT_WINDOW_MS', 15 * 60 * 1000)),
-  RATE_LIMIT_MAX: Number(getEnv('RATE_LIMIT_MAX', 100)),
+  RATE_LIMIT_MAX: Number(getEnv('RATE_LIMIT_MAX', 400)),
 
   // Storage
   STORAGE_PROVIDER: getEnv('STORAGE_PROVIDER', 'local'), // local | cloud
