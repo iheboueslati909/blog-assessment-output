@@ -19,7 +19,7 @@
 - Rôles & permissions (Admin, Éditeur, Auteur) gérés côté **backend (middlewares)** et **frontend (guards)**  
 - Admin peut gérer les rôles utilisateurs dans le backoffice (Sidebar → Manage Users)  
 - Seeder Pour initialiser des utilisateurs de test
-- 
+  
 ### 2. Gestion des Articles
 - Création d’articles avec **titre, contenu, image, tags**  
 - **Éditeurs/Admins** → peuvent éditer tous les articles  
@@ -54,7 +54,7 @@ Chaque microservice est dans un repository séparé ( pour consulter l'historiqu
 - Redis (dockerisé recommandé)
 ## Seeder
 Pour initialiser des utilisateurs de test (1 par rôle), exécuter : node src/scripts/seed-users.js
-Comptes créés par défaut
+- Comptes créés par défaut
 Admin → email: admin@example.com / password: admin123
 Éditeur → email: editor@example.com / password: editor123
 Lecteur → email: author@example.com / password: author123
