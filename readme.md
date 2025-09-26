@@ -62,6 +62,7 @@ Lecteur → email: author@example.com / password: author123
 - "npm i " pour installers les dépendances dans chaque projet.
 - **Angular** ng serve 
 - **Backends** npm run dev
+- **Docker** docker run -d --name redis -p 6379:6379 redis
   <img width="1908" height="860" alt="list screen" src="https://github.com/user-attachments/assets/398d2245-092c-4fa7-9f9b-872d483db042" />
 
 
